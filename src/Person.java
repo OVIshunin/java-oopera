@@ -2,7 +2,13 @@ import java.util.Objects;
 
 public class Person {
 
-    protected String name;
+    private String name;
+    private String surname;
+    private Gender gender;
+
+    public String getName() {
+        return name;
+    }
 
     public String getSurname() {
         return surname;
@@ -13,8 +19,7 @@ public class Person {
         return (name + ' ' + surname);
     }
 
-    protected String surname;
-    protected Gender gender;
+
 
     public Person(String name, String surname, Gender gender){
         this.name = name;
@@ -26,11 +31,13 @@ public class Person {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname) && gender == person.gender;
+        //Убрал gender из метода
+        return Objects.equals(name, person.name) && Objects.equals(surname, person.surname);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, gender);
+        //Убрал gender из метода
+        return Objects.hash(name, surname);
     }
 }

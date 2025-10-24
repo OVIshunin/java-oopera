@@ -6,8 +6,9 @@ public class Director extends Person {
         this.numberOfShows = numberOfShows;
     }
 
+    //исправил прямой доступ к полям родительского класса на get-методы
     @Override
     public String toString(){
-        return name + " " + surname;
+        return getName() + " " + getSurname();
     }
 }

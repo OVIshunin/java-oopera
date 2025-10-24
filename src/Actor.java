@@ -9,22 +9,26 @@ public class Actor extends Person {
         this.height = height;
     }
 
+    //Исправил equals, чтобы он опирался на поля имя, фамилия, рост
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Actor actor = (Actor) o;
-        if (!super.equals(actor)) return false;
-        return height == actor.height;
-    }
 
+        return actor.getName().equals(getName()) &&
+                actor.getSurname().equals(getSurname()) &&
+                height == actor.height;
+    }
+    //hashCode теперь так же опирается на имя, фамилию и рост
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), height);
+        return Objects.hash(getName(), getSurname(), height);
     }
 
+    //Заменил обращение к полям родительского класса на get-методы
     @Override
     public String toString(){
-        return name + " " + surname + " (" + height + " см)";
+        return getName() + " " + getSurname() + " (" + height + " см)";
     }
 
 
